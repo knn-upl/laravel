@@ -2,7 +2,7 @@
 @section('title'," All Categories" )
 
 @section('content')
-    
+
 
     <div class="row">
         <div class="col-md-8">
@@ -12,15 +12,13 @@
                    <tr>
                         <th>#</th>
                         <th>Name</th>
-                   </tr>  
+                   </tr>
                 </thead>
-                <tbody>
-                    @foreach ($categories as $categorie)
+                <tbody v-for="(category, index) in categories" :key="index">
                     <tr>
-                        <th> {{$categorie->id}} </th>
-                        <td> {{$categorie->name}} </td>
+                        <th> @{{category.id}} </th>
+                        <td> @{{category.name}} </td>
                     </tr>
-                    @endforeach                    
                 </tbody>
             </table>
         </div>
@@ -33,9 +31,25 @@
                 {{ Form::text('name',null,['class' => 'form-control top-space-10'])}}
                 {{ Form::submit('Create New Category',['class' =>'btn btn-primary top-space-20'])}}
                 {{ Form::close()}}
-                
+
             </div>
         </div>
     </div>
 @endsection
 
+@push('js')
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    categories
+                }
+            },
+            mounted() {
+                console.log(post);
+            },
+        });
+    </script>
+@endpush

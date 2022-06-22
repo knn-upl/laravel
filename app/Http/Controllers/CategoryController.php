@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use JavaScript;
 use Session;
 
 use Illuminate\Http\Request;
@@ -16,9 +17,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        //dd($categories);
-        return view('categories.index')
-        ->withCategories($categories);
+
+        JavaScript::put([
+            'categories' => $categories,
+        ]);
+
+        return view('categories.index');
 
     }
 

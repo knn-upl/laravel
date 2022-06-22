@@ -7,12 +7,12 @@
 
 @endsection
 @section('content')
-    
-<div class="row">
-    <div class="col-md-12 col-md-offset-2">
-        <h1>Create New Post</h1>
-        
-        {!! Form::open(['route' => 'posts.store' , 'data-parsley-validate' => '']) !!}
+
+    <div class="row">
+        <div class="col-md-12 col-md-offset-2">
+            <h1>Create New Post</h1>
+
+            {!! Form::open(['route' => 'posts.store' , 'data-parsley-validate' => '']) !!}
             {{ Form::label('title','Title:',array('class' => 'top-space-20'))}}
             {{ Form::text('title',null,array('class' => 'form-control top-space-10','required' => '')) }}
 
@@ -20,23 +20,23 @@
             {{ Form::text('slug',null,array('class' => 'form-control top-space-10','required' => ''))  }}
 
             {{ Form::label('category_id','Category:',array('class' => 'top-space-20'))}}
-            <select class="form-control" name="Category:">
-                    @foreach ($categories as $category)
-                        <option value='{{ $category->id}}'> {{$category->name}}</option>
-                    @endforeach
-            </select>
+
+            {!!
+	            Form::select('category_id',
+	            $categories
+	            , null, ['class' => 'form-control'])
+            !!}
 
             {{ Form::label('body','Post Body:',array('class' => 'top-space-20'))}}
             {{ Form::textarea('body',null,array('class' => 'form-control top-space-10','required' => '')) }}
-            
+
             {{ Form::submit('Create Post',array('class' => 'btn btn-success btn-lg btn-block top-space-10'))}}
-            
-        {!! Form::close() !!}   
+
+            {!! Form::close() !!}
+
+        </div>
 
     </div>
-
-</div>
-
 
 @endsection
 

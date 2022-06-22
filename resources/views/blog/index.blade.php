@@ -4,7 +4,7 @@
 @section('title',' Blog')
 
 @section('content')
-    
+
 
     <div class="row">
         <div class="col-md-12">
@@ -26,5 +26,6 @@
     </div>
     <hr class="hr-margin-bottom hr-margin-top">
     @endforeach
-   
+
 @endsection
+

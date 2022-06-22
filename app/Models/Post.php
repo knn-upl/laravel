@@ -10,7 +10,13 @@ class Post extends Model
     use HasFactory;
 
     protected $casts = [
-        'created_at' => 'date:Y-m-d',       
-    ]; 
+        'created_at' => 'date:Y-m-d',
+    ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
 }
 

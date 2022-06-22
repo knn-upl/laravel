@@ -20,7 +20,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id','desc')->paginate(5);
-  
+
 
         return view('posts.index') ->withPosts($posts);
     }
@@ -31,8 +31,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-       $categories = Category::all();
+    {
+       $categories = Category::all()->mapWithKeys(function ($item) {
+       			return [$item['id'] => $item->name];
+       		})->toArray();
+
         return  view('posts.create')->withCategories($categories);
     }
 
@@ -49,7 +52,7 @@ class PostController extends Controller
             'slug'          =>'required|alpha_dash|max:255|min:5',
             'category_id'   => 'required',
             'body'          => 'required',
-            
+
     ));
         $post = new Post;
         $post->title = $request->title;
@@ -93,7 +96,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
+    {
         $post= Post::find($id);
         if($request->input('slug') == $post->slug)
         {
@@ -128,13 +131,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $post = Post::find($id);
         if($post != NULL){
             $post->delete();
             Session::flash('success', 'The post was succesfully deleted.');
             return redirect()->route('posts.index');
-        }        
+        }
         Session::flash('error', 'Cannot find the post id.');
        return redirect()->route('posts');
     }
