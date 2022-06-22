@@ -1,0 +1,55 @@
+.btn-h1-spacing{
+    margin: top 18px;
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+hr{
+ border-top: 2px solid #bbb;
+ margin:2px;
+}
+
+.hr-margin-bottom{
+  margin-bottom: 15px;
+}
+
+.hr-margin-top{
+  margin-top: 15px;
+}
+
+.no-underline{
+  text-decoration: none;
+}
+
+.top-space-10{
+  margin-top: 10px;
+}
+
+.top-space-20{
+  margin-top: 20px;
+}
